@@ -13,14 +13,10 @@ const MyMap = () => {
 
   const created = (e: any) => {
     const { _latlngs, _parts } = e.layer;
-    const { centerOfRectangleLat, centerOfRectangleLng, x, y } =
-      findCenterOfRectangleAndLong(_latlngs, _parts);
+    setRectanglePosition((prev) => [...prev, _latlngs]);
+    const { x, y } = findCenterOfRectangleAndLong(_parts);
 
     setLong((prev) => [...prev, [x, y]] as number[]);
-    setRectanglePosition(
-      (prev) =>
-        [...prev, [centerOfRectangleLat, centerOfRectangleLng]] as number[]
-    );
   };
 
   return (

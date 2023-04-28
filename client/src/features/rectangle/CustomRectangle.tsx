@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Marker, Popup } from "react-leaflet";
+import { Popup, Rectangle } from "react-leaflet";
 import Button from "../../components/button-element/Button";
 import Input from "../../components/input-element/Input";
 import { formAreaUrl } from "../../utils/url";
@@ -31,12 +31,12 @@ const CustomRectangle = (props: { position: any; long: number }) => {
   };
 
   return (
-    <Marker position={position}>
+    <Rectangle bounds={position}>
       <Popup>
         {area !== 0 ? <h1>{area}</h1> : null}
         <form onSubmit={handleSubmit} className="flex flex-col	">
           <Input
-            className="border-solid rounded-lg	 border-2 border-rose-600"
+            className="border-solid rounded-lg border-2 border-rose-600"
             required
             type="text"
             placeholder="name"
@@ -47,7 +47,7 @@ const CustomRectangle = (props: { position: any; long: number }) => {
           </Button>
         </form>
       </Popup>
-    </Marker>
+    </Rectangle>
   );
 };
 
