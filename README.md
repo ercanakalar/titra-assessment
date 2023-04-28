@@ -18,14 +18,14 @@ Explanation:
   I used leaflet for first time. Therefore, I examine documantation and different project which have been done. When I establish the react-leaflet with basic map, I couldn't reach map correctly. Then, I used the leaflet's documantation and copy past the link tags in the index.html. However, the biggest problem was calculataion of the area. While doing some search, I found a feature, which is toGeoJSON, at EditControl in react-leaflet-draw. Then, I take it from the onCreate function's event by using event.layer.toGeoJSON. So, I found each position of the rectangle. While searching, I found the turf. Then, I used it to calculate the area.
   
 
-<link
-      rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"
-    />
+"<link
+"      rel="stylesheet"
+"      href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css"
+"/>
+"<link
+"      rel="stylesheet"
+"      href="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"
+" />
 
 https://stackoverflow.com/questions/47905239/react-leaflet-draw-accessing-a-polygons-array-of-coordinates-on-save
 https://datatracker.ietf.org/doc/html/rfc7946#section-3.2
