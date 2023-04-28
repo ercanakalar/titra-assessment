@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FeatureGroup, MapContainer, TileLayer } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw";
-import CustomRectangle from "./reactangle/CustomRectangle";
+import CustomRectangle from "./rectangle/CustomRectangle";
 import { LatLngExpression } from "leaflet";
 import { findCenterOfRectangleAndLong } from "../utils/findCenterOfRectangleAndLong";
 
@@ -12,8 +12,6 @@ const MyMap = () => {
   const center: LatLngExpression = [51.505, -0.09];
 
   const created = (e: any) => {
-    console.log(e, "e");
-
     const { _latlngs, _parts } = e.layer;
     const { centerOfRectangleLat, centerOfRectangleLng, x, y } =
       findCenterOfRectangleAndLong(_latlngs, _parts);
