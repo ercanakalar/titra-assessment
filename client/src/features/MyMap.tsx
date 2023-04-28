@@ -3,20 +3,20 @@ import { FeatureGroup, MapContainer, TileLayer } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw";
 import CustomRectangle from "./rectangle/CustomRectangle";
 import { LatLngExpression } from "leaflet";
-import { findCenterOfRectangleAndLong } from "../utils/findCenterOfRectangleAndLong";
+import * as turf from "@turf/turf";
 
 const MyMap = () => {
   const [rectanglePosition, setRectanglePosition] = useState<number[]>([]);
-  const [long, setLong] = useState<number[]>([]);
+  const [area, setArea] = useState<number[]>([]);
 
   const center: LatLngExpression = [51.505, -0.09];
 
   const created = (e: any) => {
-    const { _latlngs, _parts } = e.layer;
-    setRectanglePosition((prev) => [...prev, _latlngs]);
-    const { x, y } = findCenterOfRectangleAndLong(_parts);
+    // We access the polygon layer by using e.layer.toGeoJSON()
+    setArea((prev) => [...prev, Math.floor(turf.area(e.layer.toGeoJSON()))]);
 
-    setLong((prev) => [...prev, [x, y]] as number[]);
+    const { _latlngs } = e.layer;
+    setRectanglePosition((prev) => [...prev, _latlngs]);
   };
 
   return (
@@ -46,7 +46,7 @@ const MyMap = () => {
         />
       </FeatureGroup>
       {rectanglePosition.map((item: number, index: number) => (
-        <CustomRectangle long={long[index]} key={index} position={item} />
+        <CustomRectangle area={area[index]} key={index} position={item} />
       ))}
     </MapContainer>
   );

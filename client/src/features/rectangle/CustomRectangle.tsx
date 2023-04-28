@@ -4,10 +4,10 @@ import Button from "../../components/button-element/Button";
 import Input from "../../components/input-element/Input";
 import { formAreaUrl } from "../../utils/url";
 
-const CustomRectangle = (props: { position: any; long: number }) => {
-  const { position, long } = props;
+const CustomRectangle = (props: { position: any; area: number }) => {
+  const { position, area } = props;
   const [name, setName] = useState<string>("");
-  const [area, setArea] = useState<number>(0);
+  const [send, setSend] = useState<boolean>(false);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -18,11 +18,9 @@ const CustomRectangle = (props: { position: any; long: number }) => {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      mode: "cors",
-      body: JSON.stringify({ name, long }),
-    })
-      .then((res) => res.json())
-      .then((data) => setArea(data.area));
+      body: JSON.stringify({ area, name }),
+    }).then((res) => res.json());
+    setSend(true);
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +31,7 @@ const CustomRectangle = (props: { position: any; long: number }) => {
   return (
     <Rectangle bounds={position}>
       <Popup>
-        {area !== 0 ? <h1>{area}</h1> : null}
+        {send ? <h1>{area}</h1> : null}
         <form onSubmit={handleSubmit} className="flex flex-col	">
           <Input
             className="border-solid rounded-lg border-2 border-rose-600"
