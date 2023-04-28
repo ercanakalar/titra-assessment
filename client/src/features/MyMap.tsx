@@ -45,6 +45,7 @@ const MyMap = () => {
             circlemarker: false,
             marker: false,
             polyline: false,
+            polygon: false,
           }}
         />
       </FeatureGroup>
