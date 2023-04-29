@@ -13,6 +13,7 @@ How to run the application:
 Explanation:
   In the client/src/components, I create resuable button and input elements. It is for resuable components.
   In the client/src/utils, I used only functions or constant values. It is keep pure fuctions.
+  In the client/src/types, there will be types.
   In the client/src/features, it will keep the pages.
   
   I used leaflet for first time. Therefore, I examine documantation and different project which have been done. When I establish the react-leaflet with basic map, I couldn't reach map correctly. Then, I used the leaflet's documantation and copy past the link tags in the index.html. However, the biggest problem was calculataion of the area. While doing some search, I found a feature, which is toGeoJSON, at EditControl in react-leaflet-draw. Then, I take it from the onCreate function's event by using event.layer.toGeoJSON. So, I found each position of the rectangle. While searching, I found the turf. Then, I used it to calculate the area.
