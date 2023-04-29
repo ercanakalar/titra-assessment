@@ -4,9 +4,10 @@ import { EditControl } from "react-leaflet-draw";
 import CustomRectangle from "./rectangle/CustomRectangle";
 import { LatLngExpression } from "leaflet";
 import * as turf from "@turf/turf";
+import { IPosition } from "../types/positionType";
 
 const MyMap = () => {
-  const [rectanglePosition, setRectanglePosition] = useState<number[]>([]);
+  const [rectanglePosition, setRectanglePosition] = useState<IPosition[][]>([]);
   const [area, setArea] = useState<number[]>([]);
 
   const center: LatLngExpression = [51.505, -0.09];
@@ -45,8 +46,8 @@ const MyMap = () => {
           }}
         />
       </FeatureGroup>
-      {rectanglePosition.map((item: number, index: number) => (
-        <CustomRectangle area={area[index]} key={index} position={item} />
+      {rectanglePosition.map((position: IPosition[], index: number) => (
+        <CustomRectangle area={area[index]} key={index} position={position} />
       ))}
     </MapContainer>
   );
