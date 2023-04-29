@@ -19,7 +19,7 @@ const CustomRectangle = (props: { position: any; area: number }) => {
         Accept: "application/json",
       },
       body: JSON.stringify({ area, name }),
-    }).then((res) => res.json());
+    });
     setSend(true);
   };
 
